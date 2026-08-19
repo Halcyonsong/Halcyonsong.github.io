@@ -6,7 +6,6 @@ import Contribution3D from './components/Contribution3D.vue'
 import SakuraPetals from './components/SakuraPetals.vue'
 
 const contentRef = ref<HTMLElement>()
-const sections = ref<HTMLElement[]>([])
 const currentSection = ref(0)
 
 function onScroll() {
@@ -19,7 +18,6 @@ function onScroll() {
   const allSections = contentRef.value.querySelectorAll('.snap-section')
   allSections.forEach((el, i) => {
     const htmlEl = el as HTMLElement
-    const distance = Math.abs(i - currentSection.value)
     const progress = scrollTop / winHeight
     const sectionProgress = progress - i
     // Fade and slide
