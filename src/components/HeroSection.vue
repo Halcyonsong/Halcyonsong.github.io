@@ -39,7 +39,7 @@ const avatarUrl = 'https://avatars.githubusercontent.com/Halcyonsong'
   border: 3px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
   margin-bottom: 28px;
-  animation: avatarFloatIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: avatarFloatIn 2s cubic-bezier(0.22, 1, 0.36, 1) 5.2s both;
 }
 
 .avatar {
@@ -53,14 +53,14 @@ const avatarUrl = 'https://avatars.githubusercontent.com/Halcyonsong'
   font-weight: 700;
   letter-spacing: 2px;
   margin-bottom: 12px;
-  animation: fadeInUp 0.8s ease 0.8s both;
+  animation: fadeInUp 1.2s ease 6.7s both;
 }
 
 .tagline {
   font-size: 1.2rem;
   opacity: 0.8;
   letter-spacing: 1px;
-  animation: fadeInUp 0.8s ease 1.2s both;
+  animation: fadeInUp 1.2s ease 7.4s both;
 }
 
 @keyframes avatarFloatIn {

@@ -20,7 +20,7 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  animation: fadeIn 1s ease 2s both;
+  animation: fadeIn 1s ease 8.5s both;
 }
 
 .hint-text {

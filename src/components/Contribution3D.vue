@@ -172,7 +172,6 @@ function init(data: DayData[]) {
   canvas.addEventListener('mousemove', onMouseMove)
   canvas.addEventListener('mouseup', onMouseUp)
   canvas.addEventListener('mouseleave', onMouseUp)
-  canvas.addEventListener('wheel', onWheel, { passive: false })
 
   // Touch controls
   canvas.addEventListener('touchstart', onTouchStart, { passive: false })
@@ -227,13 +226,16 @@ function onTouchMove(e: TouchEvent) {
   e.preventDefault()
 }
 
-function onWheel(e: WheelEvent) {
-  e.preventDefault()
-  const delta = e.deltaY > 0 ? 1.1 : 0.9
-  camera.position.multiplyScalar(delta)
+function zoomIn() {
   const dist = camera.position.length()
-  if (dist < 60) camera.position.normalize().multiplyScalar(60)
-  if (dist > 300) camera.position.normalize().multiplyScalar(300)
+  const newDist = Math.max(60, dist * 0.85)
+  camera.position.normalize().multiplyScalar(newDist)
+}
+
+function zoomOut() {
+  const dist = camera.position.length()
+  const newDist = Math.min(300, dist * 1.15)
+  camera.position.normalize().multiplyScalar(newDist)
 }
 
 function onResize() {
@@ -317,7 +319,12 @@ onUnmounted(() => {
         </div>
 
         <div class="hint-overlay">
-          Drag to rotate · Scroll to zoom
+          Drag to rotate
+        </div>
+
+        <div class="zoom-controls">
+          <button class="zoom-btn" @click="zoomIn" title="Zoom in">+</button>
+          <button class="zoom-btn" @click="zoomOut" title="Zoom out">−</button>
         </div>
       </div>
     </div>
@@ -360,12 +367,12 @@ onUnmounted(() => {
   max-width: 1200px;
   height: 72vh;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(20px);
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 8px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -431,5 +438,38 @@ onUnmounted(() => {
   font-size: 0.7rem;
   opacity: 0.35;
   letter-spacing: 1px;
+}
+
+.zoom-controls {
+  position: absolute;
+  bottom: 16px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.zoom-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 0;
+  line-height: 1;
+}
+
+.zoom-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.95);
 }
 </style>

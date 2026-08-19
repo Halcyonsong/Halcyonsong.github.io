@@ -4,46 +4,45 @@ interface OrbData {
   color: string
   angle: number
   distance: number
-  size: number
+  coreSize: number
+  glowSize: number
   delay: number
   floatDuration: number
-  opacityDuration: number
-  scaleDuration: number
+  pulseDuration: number
 }
 
-// 核心球：Java 生态 + 数据库，持续展示，透明度 0.3~0.7
+// 统一低饱和冷色调，明度差异区分层次
 const coreOrbs: OrbData[] = [
-  { label: 'Java',         color: '#ED8B00', angle: 8,   distance: 260, size: 78, delay: 0.00, floatDuration: 7.5, opacityDuration: 6,   scaleDuration: 5 },
-  { label: 'Spring',       color: '#6DB33F', angle: 38,  distance: 320, size: 66, delay: 0.08, floatDuration: 8,   opacityDuration: 7,   scaleDuration: 6 },
-  { label: 'Spring Boot',  color: '#6DB33F', angle: 65,  distance: 285, size: 70, delay: 0.16, floatDuration: 7,   opacityDuration: 6.5, scaleDuration: 5.5 },
-  { label: 'Spring Cloud', color: '#6DB33F', angle: 95,  distance: 350, size: 62, delay: 0.12, floatDuration: 8.5, opacityDuration: 7.5, scaleDuration: 6 },
-  { label: 'Spring AI',    color: '#6DB33F', angle: 122, distance: 300, size: 58, delay: 0.20, floatDuration: 7.5, opacityDuration: 6,   scaleDuration: 5 },
-  { label: 'Nacos',        color: '#00C1DE', angle: 150, distance: 340, size: 60, delay: 0.24, floatDuration: 8,   opacityDuration: 7,   scaleDuration: 6 },
-  { label: 'Gateway',      color: '#00C1DE', angle: 178, distance: 275, size: 56, delay: 0.04, floatDuration: 7,   opacityDuration: 6.5, scaleDuration: 5.5 },
-  { label: 'Sentinel',     color: '#00C1DE', angle: 208, distance: 330, size: 54, delay: 0.18, floatDuration: 8.5, opacityDuration: 7,   scaleDuration: 5.5 },
-  { label: 'Seata',        color: '#00C1DE', angle: 238, distance: 295, size: 52, delay: 0.28, floatDuration: 7,   opacityDuration: 6,   scaleDuration: 5 },
-  { label: 'Redis',        color: '#DC382D', angle: 268, distance: 360, size: 64, delay: 0.10, floatDuration: 8,   opacityDuration: 7,   scaleDuration: 6 },
-  { label: 'MySQL',        color: '#4479A1', angle: 298, distance: 310, size: 72, delay: 0.22, floatDuration: 7.5, opacityDuration: 6.5, scaleDuration: 5.5 },
-  { label: 'SQLite',       color: '#003B57', angle: 328, distance: 325, size: 50, delay: 0.14, floatDuration: 8.5, opacityDuration: 7.5, scaleDuration: 6 },
+  { label: 'Java',         color: '#5b7c99', angle: 8,   distance: 260, coreSize: 20, glowSize: 140, delay: 0.00, floatDuration: 7.5, pulseDuration: 5 },
+  { label: 'Spring',       color: '#4a8b6f', angle: 38,  distance: 320, coreSize: 16, glowSize: 120, delay: 0.08, floatDuration: 8,   pulseDuration: 6 },
+  { label: 'Spring Boot',  color: '#4a8b6f', angle: 65,  distance: 285, coreSize: 18, glowSize: 130, delay: 0.16, floatDuration: 7,   pulseDuration: 5.5 },
+  { label: 'Spring Cloud', color: '#4a8b6f', angle: 95,  distance: 350, coreSize: 16, glowSize: 115, delay: 0.12, floatDuration: 8.5, pulseDuration: 6 },
+  { label: 'Spring AI',    color: '#6a5a8c', angle: 122, distance: 300, coreSize: 14, glowSize: 110, delay: 0.20, floatDuration: 7.5, pulseDuration: 5 },
+  { label: 'Nacos',        color: '#3a7a9c', angle: 150, distance: 340, coreSize: 15, glowSize: 115, delay: 0.24, floatDuration: 8,   pulseDuration: 6 },
+  { label: 'Gateway',      color: '#3a7a9c', angle: 178, distance: 275, coreSize: 14, glowSize: 105, delay: 0.04, floatDuration: 7,   pulseDuration: 5.5 },
+  { label: 'Sentinel',     color: '#3a7a9c', angle: 208, distance: 330, coreSize: 14, glowSize: 108, delay: 0.18, floatDuration: 8.5, pulseDuration: 6 },
+  { label: 'Seata',        color: '#3a7a9c', angle: 238, distance: 295, coreSize: 13, glowSize: 100, delay: 0.28, floatDuration: 7,   pulseDuration: 5 },
+  { label: 'Redis',        color: '#8c5a6a', angle: 268, distance: 360, coreSize: 16, glowSize: 120, delay: 0.10, floatDuration: 8,   pulseDuration: 6 },
+  { label: 'MySQL',        color: '#5a7a9c', angle: 298, distance: 310, coreSize: 17, glowSize: 125, delay: 0.22, floatDuration: 7.5, pulseDuration: 5.5 },
+  { label: 'SQLite',       color: '#4a6a7c', angle: 328, distance: 325, coreSize: 13, glowSize: 98,  delay: 0.14, floatDuration: 8.5, pulseDuration: 6 },
 ]
 
-// 非核心球：有时完全消失再出现，透明度 0~0.6
 const nonCoreOrbs: OrbData[] = [
-  { label: 'C++',       color: '#00599C', angle: 22,  distance: 400, size: 56, delay: 0.35, floatDuration: 8,   opacityDuration: 11,  scaleDuration: 5.5 },
-  { label: 'Python',    color: '#3776AB', angle: 52,  distance: 385, size: 60, delay: 0.42, floatDuration: 7.5, opacityDuration: 10,  scaleDuration: 6 },
-  { label: 'FastAPI',   color: '#009688', angle: 108, distance: 420, size: 52, delay: 0.50, floatDuration: 8.5, opacityDuration: 12,  scaleDuration: 5 },
-  { label: 'LangChain', color: '#2C3E50', angle: 138, distance: 390, size: 50, delay: 0.38, floatDuration: 7,   opacityDuration: 11.5, scaleDuration: 6 },
-  { label: 'Django',    color: '#0C4B33', angle: 165, distance: 410, size: 54, delay: 0.46, floatDuration: 8,   opacityDuration: 10.5, scaleDuration: 5.5 },
-  { label: 'ES',        color: '#005571', angle: 195, distance: 400, size: 52, delay: 0.52, floatDuration: 7.5, opacityDuration: 12,  scaleDuration: 6 },
-  { label: 'Docker',    color: '#2496ED', angle: 225, distance: 380, size: 58, delay: 0.40, floatDuration: 8.5, opacityDuration: 11,  scaleDuration: 5.5 },
-  { label: 'Git',       color: '#C73E1D', angle: 285, distance: 415, size: 54, delay: 0.36, floatDuration: 7,   opacityDuration: 10,  scaleDuration: 6 },
-  { label: 'Linux',     color: '#E8B923', angle: 318, distance: 395, size: 50, delay: 0.48, floatDuration: 8,   opacityDuration: 12,  scaleDuration: 5 },
+  { label: 'C++',       color: '#4a6a8c', angle: 22,  distance: 400, coreSize: 13, glowSize: 95,  delay: 0.35, floatDuration: 8,   pulseDuration: 7 },
+  { label: 'Python',    color: '#4a7a8c', angle: 52,  distance: 385, coreSize: 14, glowSize: 100, delay: 0.42, floatDuration: 7.5, pulseDuration: 6.5 },
+  { label: 'FastAPI',   color: '#3a8a7a', angle: 108, distance: 420, coreSize: 13, glowSize: 95,  delay: 0.50, floatDuration: 8.5, pulseDuration: 7 },
+  { label: 'LangChain', color: '#5a6a8c', angle: 138, distance: 390, coreSize: 12, glowSize: 88,  delay: 0.38, floatDuration: 7,   pulseDuration: 6.5 },
+  { label: 'Django',    color: '#3a6a5a', angle: 165, distance: 410, coreSize: 13, glowSize: 90,  delay: 0.46, floatDuration: 8,   pulseDuration: 7 },
+  { label: 'ES',        color: '#4a6a7c', angle: 195, distance: 400, coreSize: 12, glowSize: 88,  delay: 0.52, floatDuration: 7.5, pulseDuration: 7 },
+  { label: 'Docker',    color: '#3a6a9c', angle: 225, distance: 380, coreSize: 13, glowSize: 92,  delay: 0.40, floatDuration: 8.5, pulseDuration: 6.5 },
+  { label: 'Git',       color: '#8c5a4a', angle: 285, distance: 415, coreSize: 13, glowSize: 92,  delay: 0.36, floatDuration: 7,   pulseDuration: 6 },
+  { label: 'Linux',     color: '#7a7a4a', angle: 318, distance: 395, coreSize: 12, glowSize: 86,  delay: 0.48, floatDuration: 8,   pulseDuration: 7 },
 ]
 </script>
 
 <template>
   <div class="orbs-container">
-    <!-- 核心球 -->
+    <!-- 核心粒子 -->
     <div
       v-for="(orb, i) in coreOrbs"
       :key="'core-' + i"
@@ -51,22 +50,23 @@ const nonCoreOrbs: OrbData[] = [
       :style="{
         '--angle': orb.angle + 'deg',
         '--distance': orb.distance + 'px',
-        '--size': orb.size + 'px',
+        '--core-size': orb.coreSize + 'px',
+        '--glow-size': orb.glowSize + 'px',
         '--delay': orb.delay + 's',
         '--float-duration': orb.floatDuration + 's',
-        '--opacity-duration': orb.opacityDuration + 's',
-        '--scale-duration': orb.scaleDuration + 's',
+        '--pulse-duration': orb.pulseDuration + 's',
         '--color': orb.color,
       }"
     >
       <div class="orb-float">
-        <div class="orb core-orb">
+        <div class="orb-particle core-particle">
+          <div class="particle-core"></div>
           <span class="orb-label">{{ orb.label }}</span>
         </div>
       </div>
     </div>
 
-    <!-- 非核心球 -->
+    <!-- 非核心粒子 -->
     <div
       v-for="(orb, i) in nonCoreOrbs"
       :key="'non-' + i"
@@ -74,16 +74,17 @@ const nonCoreOrbs: OrbData[] = [
       :style="{
         '--angle': orb.angle + 'deg',
         '--distance': orb.distance + 'px',
-        '--size': orb.size + 'px',
+        '--core-size': orb.coreSize + 'px',
+        '--glow-size': orb.glowSize + 'px',
         '--delay': orb.delay + 's',
         '--float-duration': orb.floatDuration + 's',
-        '--opacity-duration': orb.opacityDuration + 's',
-        '--scale-duration': orb.scaleDuration + 's',
+        '--pulse-duration': orb.pulseDuration + 's',
         '--color': orb.color,
       }"
     >
       <div class="orb-float">
-        <div class="orb non-core-orb">
+        <div class="orb-particle non-core-particle">
+          <div class="particle-core"></div>
           <span class="orb-label">{{ orb.label }}</span>
         </div>
       </div>
@@ -102,7 +103,7 @@ const nonCoreOrbs: OrbData[] = [
   z-index: 0;
 }
 
-/* ===== 定位层：从头像中心弹出 ===== */
+/* ===== 定位层 ===== */
 .orb-wrapper {
   position: absolute;
   top: 0;
@@ -111,7 +112,7 @@ const nonCoreOrbs: OrbData[] = [
     rotate(var(--angle))
     translateX(var(--distance))
     rotate(calc(-1 * var(--angle)));
-  animation: orbPopOut 1.1s cubic-bezier(0.22, 1, 0.36, 1) var(--delay) both;
+  animation: orbPopOut 2s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--delay) + 5.5s) both;
 }
 
 @keyframes orbPopOut {
@@ -122,9 +123,6 @@ const nonCoreOrbs: OrbData[] = [
       rotate(calc(-1 * var(--angle)));
     opacity: 0;
   }
-  60% {
-    opacity: 1;
-  }
   100% {
     transform: translate(-50%, -50%)
       rotate(var(--angle))
@@ -134,10 +132,10 @@ const nonCoreOrbs: OrbData[] = [
   }
 }
 
-/* ===== 浮动层：气泡式缓慢漂浮 ===== */
+/* ===== 浮动层 ===== */
 .orb-float {
   animation: orbFloat var(--float-duration) ease-in-out
-    calc(var(--delay) + 1.1s) infinite;
+    calc(var(--delay) + 7.5s) infinite;
 }
 
 @keyframes orbFloat {
@@ -155,98 +153,92 @@ const nonCoreOrbs: OrbData[] = [
   }
 }
 
-/* ===== 球体层：透明度 + 缩放 + 光晕 ===== */
-.orb {
-  width: var(--size);
-  height: var(--size);
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%,
-    color-mix(in srgb, var(--color) 55%, white),
-    var(--color));
+/* ===== 粒子层 ===== */
+.orb-particle {
+  position: relative;
+  width: var(--glow-size);
+  height: var(--glow-size);
   display: flex;
   align-items: center;
   justify-content: center;
-  scale: 0;
-  animation: orbScalePop 1.1s ease var(--delay) both;
+  animation: particleFadeIn 2s ease calc(var(--delay) + 5.5s) both;
 }
 
-@keyframes orbScalePop {
-  0%   { scale: 0; }
-  60%  { scale: 1.15; }
-  100% { scale: 1; }
+@keyframes particleFadeIn {
+  0%   { opacity: 0; scale: 0.3; }
+  100% { opacity: 1; scale: 1; }
 }
 
-/* 核心球：透明度 0.3~0.7，温和缩放，永不消失 */
-.core-orb {
+/* 核心：明亮发光点 */
+.particle-core {
+  width: var(--core-size);
+  height: var(--core-size);
+  border-radius: 50%;
+  background: var(--color);
+  animation: corePulse var(--pulse-duration) ease-in-out infinite;
+}
+
+/* 核心粒子：光晕大小变化 */
+.core-particle .particle-core {
   animation:
-    orbScalePop 1.1s ease var(--delay) both,
-    orbOpacityCore var(--opacity-duration) ease-in-out
-      calc(var(--delay) + 1.1s) infinite,
-    orbScaleCore var(--scale-duration) ease-in-out
-      calc(var(--delay) + 1.1s) infinite,
-    orbGlow var(--scale-duration) ease-in-out
-      calc(var(--delay) + 1.1s) infinite;
+    corePulse var(--pulse-duration) ease-in-out infinite,
+    coreGlow var(--pulse-duration) ease-in-out infinite;
 }
 
-@keyframes orbOpacityCore {
-  0%, 100% { opacity: 0.7; }
-  50%      { opacity: 0.3; }
-}
-
-@keyframes orbScaleCore {
-  0%, 100% { scale: 0.96; }
-  50%      { scale: 1.06; }
-}
-
-/* 非核心球：透明度 0~0.6，有时完全消失停留再出现 */
-.non-core-orb {
-  animation:
-    orbScalePop 1.1s ease var(--delay) both,
-    orbOpacityNonCore var(--opacity-duration) ease-in-out
-      calc(var(--delay) + 1.1s) infinite,
-    orbScaleNonCore var(--scale-duration) ease-in-out
-      calc(var(--delay) + 1.1s) infinite,
-    orbGlow var(--scale-duration) ease-in-out
-      calc(var(--delay) + 1.1s) infinite;
-}
-
-@keyframes orbOpacityNonCore {
-  0%   { opacity: 0.6; }
-  20%  { opacity: 0.45; }
-  30%  { opacity: 0.15; }
-  35%  { opacity: 0; }
-  50%  { opacity: 0; }
-  58%  { opacity: 0.08; }
-  70%  { opacity: 0.35; }
-  85%  { opacity: 0.55; }
-  100% { opacity: 0.6; }
-}
-
-@keyframes orbScaleNonCore {
-  0%, 100% { scale: 0.94; }
-  50%      { scale: 1.08; }
-}
-
-/* 光晕 */
-@keyframes orbGlow {
+@keyframes corePulse {
   0%, 100% {
     box-shadow:
-      0 0 15px color-mix(in srgb, var(--color) 25%, transparent),
-      inset 0 0 12px rgba(255, 255, 255, 0.1);
+      0 0 10px 2px var(--color),
+      0 0 25px 6px color-mix(in srgb, var(--color) 55%, transparent),
+      0 0 50px 12px color-mix(in srgb, var(--color) 35%, transparent);
   }
   50% {
     box-shadow:
-      0 0 35px color-mix(in srgb, var(--color) 55%, transparent),
-      inset 0 0 20px rgba(255, 255, 255, 0.2);
+      0 0 14px 3px color-mix(in srgb, var(--color) 80%, white),
+      0 0 35px 10px color-mix(in srgb, var(--color) 50%, transparent),
+      0 0 70px 20px color-mix(in srgb, var(--color) 25%, transparent),
+      0 0 100px 30px color-mix(in srgb, var(--color) 12%, transparent);
   }
 }
 
+@keyframes coreGlow {
+  0%, 100% { scale: 0.9; }
+  50%      { scale: 1.15; }
+}
+
+/* 非核心粒子：光晕变化更大，有时几乎收缩消失再扩散 */
+.non-core-particle .particle-core {
+  animation: nonCorePulse var(--pulse-duration) ease-in-out infinite;
+}
+
+@keyframes nonCorePulse {
+  0%, 100% {
+    box-shadow:
+      0 0 8px 2px var(--color),
+      0 0 20px 5px color-mix(in srgb, var(--color) 50%, transparent),
+      0 0 40px 10px color-mix(in srgb, var(--color) 30%, transparent);
+    scale: 0.85;
+  }
+  50% {
+    box-shadow:
+      0 0 12px 3px color-mix(in srgb, var(--color) 75%, white),
+      0 0 30px 8px color-mix(in srgb, var(--color) 45%, transparent),
+      0 0 55px 15px color-mix(in srgb, var(--color) 22%, transparent),
+      0 0 85px 25px color-mix(in srgb, var(--color) 10%, transparent);
+    scale: 1.1;
+  }
+}
+
+/* 标签 */
 .orb-label {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #fff;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  position: absolute;
+  bottom: calc(50% - var(--glow-size) / 2 - 18px);
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.55);
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.9);
   white-space: nowrap;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
 }
 </style>
