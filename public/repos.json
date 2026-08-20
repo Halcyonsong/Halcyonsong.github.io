@@ -41,11 +41,11 @@
   },
   {
     "name": "liteagent-template",
-    "description": "一个面向 AI Agent 与 LLM 集成的轻量级 Java 框架骨架，提供统一抽象、OpenAI 兼容对话支持，以及便于后续扩展流式、工具调用和 Agent 编排的模块化结构。",
+    "description": " 一个面向 AI Agent 与 LLM 集成的轻量级 Java 框架，提供统一抽象、OpenAI 兼容对话支持，以及流式响应、工具调用、记忆窗口和 Agent 编排的模块化结构。",
     "created_at": "2026-08-11T05:07:54Z",
     "html_url": "https://github.com/Halcyonsong/liteagent-template",
     "language": "Java",
-    "stargazers_count": 2
+    "stargazers_count": 22
   },
   {
     "name": "Halcyonsong",
@@ -60,7 +60,7 @@
     "description": "No description",
     "created_at": "2026-08-19T05:25:35Z",
     "html_url": "https://github.com/Halcyonsong/Halcyonsong.github.io",
-    "language": null,
+    "language": "Vue",
     "stargazers_count": 0
   }
 ]
